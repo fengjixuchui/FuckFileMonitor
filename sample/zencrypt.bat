@@ -1,27 +1,29 @@
 @echo off
 SETLOCAL ENABLEDELAYEDEXPANSION
 
-rem ĞèÒª¼ÓÃÜµÄÄ¿Â¼
+rem éœ€è¦åŠ å¯†çš„å†…å®¹å­˜æ”¾çš„ç›®å½•
 set _enc_dir_=zencrypt
 
 if not "%1"=="" set _enc_dir_=%1
 
-rem Éú³É¼ÓÃÜºóµÄÄ¿Â¼
+rem åŠ å¯†å®Œæˆåçš„å›¾ç‰‡æ–‡ä»¶å¤¹
 set _done_dir=done
 
 if not "%2"=="" set _enc_dir_=%2
 
-rem Î±×°µÄÍ¼Æ¬Ä¿Â¼(¼ÇµÃpngÍ¼Æ¬)
+rem ç”¨åˆ°åŠ å¯†çš„å›¾ç‰‡åŸå›¾
 set _pic_img_=pic
 
-rem ÉèÖÃ·Ö°üµ¥¸öÎÄ¼ş´óĞ¡,µ¥Î»MB
+rem åˆ†åŒ…å¤§å°ï¼ˆå•ä½MBï¼‰
 set _file_size_=5
 
-rem ÉèÖÃ¼ÓÃÜÃÜÂë
+rem åŠ å¯†å¯†ç 
 set _password_=123456
 
 del /Q done\*.*
 del /Q tmp\*.*
+
+mkdir %_enc_dir_%
 
 .\7z.exe a -mx9 -md64m -mfb=273 -slp -ssw -v%_file_size_%m -p%_password_% "tmp/tmp" %_enc_dir_%
 .\FuckFileMonitor.exe encrypt %_pic_img_% "tmp" %_done_dir%
